@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th><label for="Amount">Amount</label></th>
+            <th>From Currency</th>
+            <th>To Currency</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><input type="text" id="Amount"></td>
+            <td>
+                <select id="From">
+                    <option value="VND">VND</option>
+                    <option value="USD">USD</option>
+                </select>
+            </td>
+            <td>
+                <select id="To">
+                    <option value="VND">VND</option>
+                    <option value="USD">USD</option>
+                </select>
+            </td>
+            <td><button onclick="ChangeMoney()">Convert</button></td>
+        </tr>
+    </table>
+    <div id="Result"></div>
+    <br>
+</body>
+<script>
+    function ChangeMoney() {
+        var Amount = +document.getElementById("Amount").value;
+        console.log(Amount);
+        var A = document.getElementById('From').value;
+        console.log(A);
+        var B = document.getElementById("To").value;
+        console.log(B);
+        if (A == "VND" && B == "VND") {
+            document.getElementById('Result').innerHTML = Amount + " VNĐ ";
+        } else {
+            if (A == "USD" && B == "USD") {
+                document.getElementById('Result').innerHTML = Amount + " $ ";
+            } else {
+                if (A == "USD" && B == "VND") {
+                    document.getElementById('Result').innerHTML = Amount * 23000 + " VNĐ ";
+                } else {
+                    document.getElementById('Result').innerHTML = Amount / 23000 + " $ ";
+                }
+            }
+        }
+    }
+</script>
+
+</html>
